@@ -1,7 +1,7 @@
 <template>
     <div class="container">
         <Header />
-        <Card />
+        <Card :userData="userData" @trigger-preview="triggerPreview" />
     </div>
 </template>
 
@@ -15,14 +15,23 @@
             Header,
             Card,
         },
-        data () {
-            return {
-                userData: []
+        methods: {
+            triggerPreview(formUsername) {
+                this.username = formUsername
+                this.fetchUserData(this.username)
+            },
+            async fetchUserData(username) {
+                const res = await fetch(`https://api.github.com/users/${username}`)
+                const data = await res.json()
+                this.userData = data
             }
         },
-        mounted () {
-            console.log(this.userData)
-        }
+        data () {
+            return {
+                username: "",
+                userData: {}
+            }
+        },
     }
 </script>
 
