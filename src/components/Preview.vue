@@ -127,6 +127,7 @@
         justify-content: space-around;
         font-size: 1.2rem;
         margin-bottom: 0.6rem;
+        column-gap: 0.8rem;
     }
     .links-section div {
         display: flex;

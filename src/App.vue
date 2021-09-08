@@ -59,6 +59,9 @@
         color: #333534;
         text-decoration: none;
     }
+    a:hover {
+        text-decoration: underline;
+    }
     .container {
         display: flex;
         flex-direction: column;
@@ -68,7 +71,7 @@
         width: 100%;
     }
     .card {
-        background: #f3f5f9;
+        background-image: linear-gradient(to top, #e6e9f0 0%, #eef1f5 100%);
         border-radius: 15px;
         padding: 2rem;
         width: 25%;
