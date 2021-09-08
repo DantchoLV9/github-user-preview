@@ -69,7 +69,7 @@
             }
         }
     }
-</script
+</script>
 
 <style scoped>
 
