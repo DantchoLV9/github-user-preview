@@ -9,16 +9,6 @@
             <h3 v-if="userData.name !== null">{{userData.name}}</h3>
             <p v-if="userData.bio !== null">{{userData.bio}}</p>
         </div>
-        <div class="followers-section">
-            <div>
-                <p>Followers:</p>
-                <p>{{userData.followers}}</p>
-            </div>
-            <div>
-                <p>Following:</p>
-                <p>{{userData.following}}</p>
-            </div>
-        </div>
         <div class="links-section" v-if="userData.blog !== '' || userData.twitter_username !== null">
             <div v-if="userData.blog !== ''">
                 <fa icon="globe" />
@@ -29,27 +19,34 @@
                 <a v-bind:href="`https://twitter.com/${userData.twitter_username}`" target="_blank">{{`@${userData.twitter_username}`}}</a>
             </div>
         </div>
-        <div class="location-section" v-if="userData.company !== null || userData.location !== null">
-            <p v-if="userData.company !== null">
-                {{userData.company}}
-            </p>
+        <div class="followers-section">
+            <div>
+                <p>Followers</p>
+                <p>{{userData.followers}}</p>
+            </div>
+            <div>
+                <p>Following</p>
+                <p>{{userData.following}}</p>
+            </div>
+        </div>
+        <div class="repos-section">
+            <div>
+                <p>Repos</p>
+                <p>{{userData.public_repos}}</p>
+            </div>
+            <div>
+                <p>Gists</p>
+                <p>{{userData.public_gists}}</p>
+            </div>
+        </div>
+        <div class="location-section" v-if="userData.location !== null">
             <p v-if="userData.location !== null">
                 {{userData.location}}
             </p>
         </div>
-        <div class="repos-section">
-            <div>
-                <p>Repos:</p>
-                <p>{{userData.public_repos}}</p>
-            </div>
-            <div>
-                <p>Gists:</p>
-                <p>{{userData.public_gists}}</p>
-            </div>
-        </div>
         <div class="user-since-section">
             <p>User since</p>
-            <p>{{userData.created_at}}</p>
+            <p>{{`${new Date(userData.created_at).getDate()}/${new Date(userData.created_at).getMonth()+1}/${new Date(userData.created_at).getFullYear()}`}}</p>
         </div>
     </div>
 </template>
@@ -86,14 +83,37 @@
         width: 100%;
         display: flex;
         justify-content: space-between;
+        align-items: center;
+        margin-bottom: 1rem;
+    }
+    .username-section h2 {
+        font-weight: 500;
+        font-size: 1.8rem;
+    }
+    .username-section a {
+        font-size: 1.2rem;
+        font-weight: 500;
+        opacity: 0.6;
     }
     .desc-section {
         width: 100%;
+        margin-bottom: 0.6rem;
+    }
+    .desc-section h3 {
+        font-size: 1.4rem;
+        font-weight: 400;
+    }
+    .desc-section p {
+        font-size: 1.1rem;
     }
     .followers-section {
         display: flex;
         width: 100%;
-        justify-content: space-between;
+        justify-content: space-around;
+        font-size: 1.2rem;
+        opacity: 0.6;
+        font-weight: 500;
+        margin-bottom: 0.6rem;
     }
     .followers-section div {
         display: flex;
@@ -102,8 +122,17 @@
     }
     .links-section {
         display: flex;
+        flex-wrap: wrap;
         width: 100%;
-        justify-content: space-between;
+        justify-content: space-around;
+        font-size: 1.2rem;
+        margin-bottom: 0.6rem;
+    }
+    .links-section div {
+        display: flex;
+        justify-content: center;
+        align-content: center;
+        column-gap: 0.4rem;
     }
     @media (max-width: 550px) {
         .links-section {
@@ -114,12 +143,18 @@
     .location-section {
         display: flex;
         width: 100%;
-        justify-content: space-between;
+        justify-content: space-around;
+        font-size: 1.2rem;
+        margin-bottom: 0.6rem;
     }
     .repos-section {
         display: flex;
         width: 100%;
-        justify-content: space-between;
+        justify-content: space-around;
+        font-size: 1.2rem;
+        opacity: 0.6;
+        font-weight: 500;
+        margin-bottom: 0.6rem;
     }
     .repos-section div {
         display: flex;
@@ -128,5 +163,7 @@
     }
     .user-since-section {
         text-align: center;
+        font-size: 1.2rem;
+        opacity: 0.6;
     }
 </style>

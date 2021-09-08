@@ -42,7 +42,7 @@
 </script>
 
 <style>
-    @import url('https://fonts.googleapis.com/css2?family=Rubik:wght@400;700&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap');
     * {
         margin: 0;
         padding: 0;
@@ -53,6 +53,11 @@
     }
     body, button, input {
         font-family: 'Rubik', sans-serif;
+        color: #333534;
+    }
+    a {
+        color: #333534;
+        text-decoration: none;
     }
     .container {
         display: flex;

@@ -21,5 +21,6 @@ export default {
         word-spacing: 15px;
         font-size: 2.5rem;
         margin-bottom: 2rem;
+        font-weight: 700;
     }
 </style>
