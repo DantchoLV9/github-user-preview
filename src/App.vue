@@ -25,6 +25,7 @@
                 const data = await res.json()
                 if (data.message === "Not Found") {
                     alert(`${this.username} Not Found`)
+                    this.$router.push('/')
                     return
                 }
                 this.userData = data
