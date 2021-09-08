@@ -66,7 +66,57 @@
         background: #f3f5f9;
         border-radius: 15px;
         padding: 2rem;
-        width: 50%;
+        width: 25%;
         box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+    }
+    @media (max-width: 1700px) {
+        .card {
+            width: 30%;
+        }
+    }
+    @media (max-width: 1500px) {
+        .card {
+            width: 35%;
+        }
+    }
+    @media (max-width: 1250px) {
+        .card {
+            width: 40%;
+        }
+    }
+    @media (max-width: 1100px) {
+        .card {
+            width: 45%;
+        }
+    }
+    @media (max-width: 1000px) {
+        .card {
+            width: 50%;
+        }
+    }
+    @media (max-width: 850px) {
+        .card {
+            width: 55%;
+        }
+    }
+    @media (max-width: 750px) {
+        .card {
+            width: 65%;
+        }
+    }
+    @media (max-width: 650px) {
+        .card {
+            width: 75%;
+        }
+    }
+    @media (max-width: 550px) {
+        .card {
+            width: 85%;
+        }
+    }
+    @media (max-width: 500px) {
+        .card {
+            width: 95%;
+        }
     }
 </style>

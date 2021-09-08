@@ -1,15 +1,15 @@
 <template>
-    <div>
+    <div class="preview-wrapper">
         <img v-bind:src="userData.avatar_url" v-bind:alt="userData.login">
-        <div>
+        <div class="username-section">
             <h2>{{userData.login}}</h2>
             <a v-bind:href="userData.html_url" target="_blank">View Profile</a>
         </div>
-        <div v-if="userData.name !== null || userData.bio !== null">
+        <div class="desc-section" v-if="userData.name !== null || userData.bio !== null">
             <h3 v-if="userData.name !== null">{{userData.name}}</h3>
             <p v-if="userData.bio !== null">{{userData.bio}}</p>
         </div>
-        <div>
+        <div class="followers-section">
             <div>
                 <p>Followers:</p>
                 <p>{{userData.followers}}</p>
@@ -19,17 +19,17 @@
                 <p>{{userData.following}}</p>
             </div>
         </div>
-        <div v-if="userData.blog !== '' || userData.twitter_username !== null">
-            <div>
+        <div class="links-section" v-if="userData.blog !== '' || userData.twitter_username !== null">
+            <div v-if="userData.blog !== ''">
                 <fa icon="globe" />
+                <a v-bind:href="`${userData.blog !== undefined && userData.blog.startsWith('https://') ? userData.blog : userData.blog !== undefined && userData.blog.startsWith('http://') ? userData.blog : `http://${userData.blog}`}`" target="_blank">{{userData.blog}}</a>
             </div>
-            <div>
+            <div v-if="userData.twitter_username !== null">
                 <fa :icon="['fab', 'twitter']" />
+                <a v-bind:href="`https://twitter.com/${userData.twitter_username}`" target="_blank">{{`@${userData.twitter_username}`}}</a>
             </div>
-            <a v-if="userData.blog !== ''" v-bind:href="`${userData.blog !== undefined && userData.blog.startsWith('https://') ? userData.blog : userData.blog !== undefined && userData.blog.startsWith('http://') ? userData.blog : `http://${userData.blog}`}`" target="_blank">{{userData.blog}}</a>
-            <a v-if="userData.twitter_username !== null" v-bind:href="`https://twitter.com/${userData.twitter_username}`" target="_blank">{{`@${userData.twitter_username}`}}</a>
         </div>
-        <div v-if="userData.company !== null || userData.location !== null">
+        <div class="location-section" v-if="userData.company !== null || userData.location !== null">
             <p v-if="userData.company !== null">
                 {{userData.company}}
             </p>
@@ -37,7 +37,7 @@
                 {{userData.location}}
             </p>
         </div>
-        <div>
+        <div class="repos-section">
             <div>
                 <p>Repos:</p>
                 <p>{{userData.public_repos}}</p>
@@ -47,7 +47,7 @@
                 <p>{{userData.public_gists}}</p>
             </div>
         </div>
-        <div>
+        <div class="user-since-section">
             <p>User since</p>
             <p>{{userData.created_at}}</p>
         </div>
@@ -72,5 +72,61 @@
 </script>
 
 <style scoped>
-
+    .preview-wrapper {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    img {
+        width: 250px;
+        border-radius: 50%;
+        margin-bottom: 2rem;
+    }
+    .username-section {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+    }
+    .desc-section {
+        width: 100%;
+    }
+    .followers-section {
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+    }
+    .followers-section div {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+    }
+    .links-section {
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+    }
+    @media (max-width: 550px) {
+        .links-section {
+            flex-direction: column;
+            align-items: center;
+        }
+    }
+    .location-section {
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+    }
+    .repos-section {
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+    }
+    .repos-section div {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+    }
+    .user-since-section {
+        text-align: center;
+    }
 </style>
