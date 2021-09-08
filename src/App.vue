@@ -1,19 +1,19 @@
 <template>
     <div class="container">
         <Header />
-        <Card :userData="userData" @trigger-preview="triggerPreview" />
+        <div class="card">
+            <router-view :userData="userData" @trigger-preview="triggerPreview"></router-view>
+        </div>
     </div>
 </template>
 
 <script>
-    import Card from './components/Card'
     import Header from './components/Header'
 
     export default {
         name: 'App',
         components: {
             Header,
-            Card,
         },
         methods: {
             triggerPreview(formUsername) {
@@ -23,7 +23,12 @@
             async fetchUserData(username) {
                 const res = await fetch(`https://api.github.com/users/${username}`)
                 const data = await res.json()
+                if (data.message === "Not Found") {
+                    alert(`${this.username} Not Found`)
+                    return
+                }
                 this.userData = data
+                this.$router.push(this.username)
             }
         },
         data () {
@@ -55,5 +60,12 @@
         align-items: center;
         height: 100vh;
         width: 100%;
+    }
+    .card {
+        background: #f3f5f9;
+        border-radius: 15px;
+        padding: 2rem;
+        width: 50%;
+        box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
     }
 </style>

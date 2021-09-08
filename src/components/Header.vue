@@ -1,5 +1,7 @@
 <template>
-    <h1>GitHub User Preview</h1>
+    <router-link to="/">
+        <h1>GitHub User Preview</h1>
+    </router-link>
 </template>
 
 <script>
@@ -9,6 +11,9 @@ export default {
 </script>
 
 <style scoped>
+    a {
+        text-decoration: none;
+    }
     h1 {
         text-align: center;
         color: #f3f5f9;

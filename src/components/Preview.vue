@@ -60,8 +60,16 @@
         props: {
             userData: Object,
         },
+        mounted() {
+            if (this.userData.username !== this.$router.currentRoute._value.params.username) {
+                this.$emit('trigger-preview', this.$router.currentRoute._value.params.username)
+            }
+            if (Object.keys(this.userData).length === 0) {
+                this.$emit('trigger-preview', this.$router.currentRoute._value.params.username)
+            }
+        }
     }
-</script>
+</script
 
 <style scoped>
 
