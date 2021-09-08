@@ -1,7 +1,7 @@
 <template>
     <div class="form">
-        <input v-model="formUsername" placeholder="Enter GitHub Username">
-        <button @click="triggerPreview()">Preview</button>
+        <input v-model="formUsername" v-on:keyup.enter="triggerPreview()" placeholder="Enter GitHub Username">
+        <button @click="triggerPreview()">View</button>
     </div>
 </template>
 

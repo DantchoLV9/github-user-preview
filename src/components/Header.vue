@@ -14,13 +14,16 @@ export default {
     a {
         text-decoration: none;
     }
+    a:hover {
+        text-decoration: none;
+    }
     h1 {
         text-align: center;
         color: #f3f5f9;
         letter-spacing: 1.5px;
         word-spacing: 15px;
         font-size: 2.5rem;
-        margin-bottom: 2rem;
+        margin-bottom: 3rem;
         font-weight: 700;
     }
 </style>

@@ -2,6 +2,7 @@
     <div class="container">
         <Header />
         <div class="card">
+            <router-link v-if="this.$route.path !== '/'" class="check-another-link" to="/">View another profile</router-link>
             <router-view :userData="userData" @trigger-preview="triggerPreview"></router-view>
         </div>
     </div>
@@ -70,12 +71,21 @@
         height: 100vh;
         width: 100%;
     }
+    .check-another-link {
+        color: #f3f5f9;
+        position: absolute;
+        top: -30px;
+        left: 15px;
+        font-weight: 500;
+        font-size: 1.2rem;
+    }
     .card {
         background-image: linear-gradient(to top, #e6e9f0 0%, #eef1f5 100%);
         border-radius: 15px;
         padding: 2rem;
         width: 25%;
         box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+        position: relative;
     }
     @media (max-width: 1700px) {
         .card {
