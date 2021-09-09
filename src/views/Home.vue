@@ -15,6 +15,9 @@
                 this.$emit('trigger-preview', formUsername)
             }
         },
+        mounted() {
+            document.title = "GitHub User Preview"
+        },
         emits: ['trigger-preview']
     }
 </script>
